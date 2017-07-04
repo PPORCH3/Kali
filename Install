@@ -1,8 +1,8 @@
 #Script d'installation des outils nécessaire
 cd /$USERNAME/Scripts
 
-#apt-get -y update 
-#apt-get -y upgrade
+apt-get -y update 
+apt-get -y upgrade
 
 clear
 #Kick Them Out
@@ -29,7 +29,7 @@ echo Installer Macchanger ?
 echo Y\/N
 read var2
 
-if [ $var2 = "Y" ] || [ $var2 = "y" ]
+if [ $var2 = "Y" ] || [ $var2 = "y" ]
 then
 
 apt-get -y install macchanger
@@ -57,6 +57,7 @@ echo Tu es sur ?
 
 fi
 
+apt-get install figlet
 clear
 #tor2
 echo Installer Tor ?
@@ -67,20 +68,32 @@ if [ $var4 = "Y" ] || [ $var4 = "y" ]
 then
 
 apt-get -y install aria2
-#aria2c https://www.torproject.org/dist/torbrowser/7.0.1/tor-browser-linux64-7.0.1_en-US.tar.xz
-aria2c https://www.torproject.org/dist/torbrowser/7.0.2/tor-browser-linux32-7.0.2_en-US.tar.xz
-#tar -Jxvf tor-browser-linux64-7.0.1_en-US.tar.xz ; sleep 5
-tar -Jxvf tor-browser-linux32-7.0.2_en-US.tar.xz ; sleep 5
-#rm tor-browser-linux64-7.0.1_en-US.tar.xz
-rm tor-browser-linux32-7.0.2_en-US.tar.xz
-sed -i -e "s/if \[ \"\`id -u\`\" -eq 0 \]\; then/if \[ \"\`id -u\`\" -eq 1 \]\; then/g" Scripts/tor-browser_en-US/Browser/start-tor-browser
-chown -hR root Scripts/tor-browser_en-US
+echo 64 ou 32 bits \? \(64\/32\)
+read sys
+	if [ $sys = "64" ]
+	then
 
+		aria2c https://www.torproject.org/dist/torbrowser/7.0.1/tor-browser-linux64-7.0.1_en-US.tar.xz
+		tar -Jxvf tor-browser-linux64-7.0.1_en-US.tar.xz ; sleep 5
+		rm tor-browser-linux64-7.0.1_en-US.tar.xz
+		
+	elif [ $sys = "32" ]
+	then 
+
+		aria2c https://www.torproject.org/dist/torbrowser/7.0.2/tor-browser-linux32-7.0.2_en-US.tar.xz
+		tar -Jxvf tor-browser-linux32-7.0.2_en-US.tar.xz ; sleep 5
+		rm tor-browser-linux32-7.0.2_en-US.tar.xz
+
+	else
+
+		figlet -ck ERREUR ; sleep 5 ; exit 
+
+	fi
 else
-
-echo Le dernier alors 
-
+echo Le dernier alors
 fi
+sed -i -e "s/if \[ \"\`id -u\`\" -eq 0 \]\; then/if \[ \"\`id -u\`\" -eq 1 \]\; then/g" /$USERNAME/Scripts/tor-browser_en-US/Browser/start-tor-browser
+chown -hR root /$USERNAME/Scripts/tor-browser_en-US
 
 clear
 #Virus
@@ -101,5 +114,17 @@ fi
 
 clear
 #Finish
-#apt-get -y update
-#apt-get -y upgrade
+apt-get -y update
+apt-get -y upgrade
+clear
+figlet -ck Job Done Bye
+sleep 2
+ 
+#WARNING#
+figlet ATTENTION
+echo "Avant de lancer le raccourci de SeToolKit veuillez le lancer manuellement pour accepter les conditions d'utilistaion"
+read -rn1 -p "Press any key to continue"
+
+#Bugs Known#
+#Si pendant l'installation cela passe directement a la question suivante apres avoir fait 'y' ou 'Y';
+#Il faut supprimer l'espace entre '||' et '[' de la question correspondante => if [ $varX = "Y" ] || [ $varX = "y" ]   
