@@ -1,0 +1,105 @@
+#Script d'installation des outils nécessaire
+cd /$USERNAME/Scripts
+
+#apt-get -y update 
+#apt-get -y upgrade
+
+clear
+#Kick Them Out
+echo Installer Kick Them Out \? 
+echo Y\/N
+read var1
+
+if [ $var1 = "Y" ] || [ $var1 = "y" ]
+then
+
+git clone https://github.com/k4m4/kickthemout.git
+cd kickthemout
+pip install -r requirements.txt
+
+else 
+
+echo Au suivant
+
+fi
+
+clear
+#Macchanger 1 & 2
+echo Installer Macchanger ?
+echo Y\/N
+read var2
+
+if [ $var2 = "Y" ] || [ $var2 = "y" ]
+then
+
+apt-get -y install macchanger
+
+else
+
+echo Au suivant alors
+
+fi
+
+clear
+#proxyon & proxyoff
+echo Installer Proxychains ?
+echo Y\/N
+read var3
+
+if [ $var3 = "Y" ] || [ $var3 = "y" ]
+then
+
+apt-get -y install tor proxychains
+
+else
+
+echo Tu es sur ?
+
+fi
+
+clear
+#tor2
+echo Installer Tor ?
+echo Y\/N
+read var4
+
+if [ $var4 = "Y" ] || [ $var4 = "y" ]
+then
+
+apt-get -y install aria2
+#aria2c https://www.torproject.org/dist/torbrowser/7.0.1/tor-browser-linux64-7.0.1_en-US.tar.xz
+aria2c https://www.torproject.org/dist/torbrowser/7.0.2/tor-browser-linux32-7.0.2_en-US.tar.xz
+#tar -Jxvf tor-browser-linux64-7.0.1_en-US.tar.xz ; sleep 5
+tar -Jxvf tor-browser-linux32-7.0.2_en-US.tar.xz ; sleep 5
+#rm tor-browser-linux64-7.0.1_en-US.tar.xz
+rm tor-browser-linux32-7.0.2_en-US.tar.xz
+sed -i -e "s/if \[ \"\`id -u\`\" -eq 0 \]\; then/if \[ \"\`id -u\`\" -eq 1 \]\; then/g" Scripts/tor-browser_en-US/Browser/start-tor-browser
+chown -hR root Scripts/tor-browser_en-US
+
+else
+
+echo Le dernier alors 
+
+fi
+
+clear
+#Virus
+echo Installer Clamav ?
+echo Y\/N
+read var5
+
+if [ $var5 = "Y" ] || [ $var5 = "y" ]
+then
+
+apt-get -y install clamav
+
+else
+
+echo "Bon c'est fini alors Bye"
+
+fi
+
+clear
+#Finish
+#apt-get -y update
+#apt-get -y upgrade
