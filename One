@@ -6,7 +6,10 @@ chmod +x -R /$USERNAME/Scripts
 
 apt-get -y update 
 apt-get -y upgrade
+apt-get -y install figlet
 
+clear
+figlet -ck ATTENTION : Ceci est une version alpha, elle peut donc contenir des bugs
 clear
 #Kick Them Out
 echo Installer Kick Them Out \? 
