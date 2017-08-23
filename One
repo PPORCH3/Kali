@@ -131,28 +131,28 @@ chown -hR root /$USERNAME/Scripts/tor-browser_en-US
 
 clear
 #Virus
-echo Installer Clamav ?
-echo Y\/N
-read var5
+#echo Installer Clamav ?
+#echo Y\/N
+#read var5
 
-if [ $var5 = "Y" ] || [ $var5 = "y" ]
-then
-touch Virus
-echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..$
-echo read rep >> Virus
-echo cd \$rep >> Virus
-echo clamscan -r >> Virus
-echo cd \~ >> Virus
-echo "alias virus='cd /$USERNAME/Scripts ; ./Virus ; cd ~' " >> /$USERNAME/.bashrc
+#if [ $var5 = "Y" ] || [ $var5 = "y" ]
+#then
+#touch Virus
+#echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..$
+#echo read rep >> Virus
+#echo cd \$rep >> Virus
+#echo clamscan -r >> Virus
+#echo cd \~ >> Virus
+#echo "alias virus='cd /$USERNAME/Scripts ; ./Virus ; cd ~' " >> /$USERNAME/.bashrc
 
 
-apt-get -y install clamav
+#apt-get -y install clamav
 
-else
+#else
 
-echo "Bon c'est fini alors Bye"
+#echo "Bon c'est fini alors Bye"
 
-fi
+#fi
 
 clear
 
