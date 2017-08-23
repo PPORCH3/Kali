@@ -20,7 +20,8 @@ touch kick
 echo cd /$USERNAME/Scripts/kickthemout >> kick
 echo python kickthemout.py >> kick
 echo cd \~ >> kick
-echo "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " >> /$USERNAME/.bashrc
+#echo "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " >> /$USERNAME/.bashrc
+grep -q -F "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " /$USERNAME/.bashrc || echo "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " >> /$USERNAME/.bashrc
 
 git clone https://github.com/k4m4/kickthemout.git
 cd kickthemout
@@ -28,7 +29,7 @@ pip install -r requirements.txt
 
 else 
 
-echo Au suivant
+echo Au suivant alors
 
 fi
 
@@ -47,7 +48,9 @@ echo 'ifconfig wlan0 down' >> Mac
 echo 'macchanger -r -A wlan0 ; sleep 5' >> Mac
 echo 'ifconfig wlan0 up ; sleep 5' >> Mac
 echo 'service network-manager start' >> Mac
+grep -q -F "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " /$USERNAME/.bashrc || echo "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " >> /$USERNAME/.bashrc
 
+cd Scripts
 touch Macchanger.sh
 echo '#!/bin/bash' >> Macchanger.sh
 echo 'ifconfig wlan0 down' >> Macchanger.sh
@@ -55,6 +58,7 @@ echo 'sleep 2' >> Macchanger.sh
 echo 'macchanger -r -A wlan0' >> Macchanger.sh
 echo 'sleep 2' >> Macchanger.sh
 echo 'ifconfig wlan0 up' >> Macchanger.sh
+grep -q -F "alias Mac2='cd /$USERNAME/Scripts ; ./Macchanger.sh ; cd ~' " /$USERNAME/.bashrc || echo "alias Mac2='cd /$USERNAME/Scripts ; ./Macchanger.sh ; cd ~' " >> /$USERNAME/.bashrc
 
 apt-get -y install macchanger
 
@@ -84,6 +88,8 @@ echo service tor stop >> proxyoff
 echo /etc/init.d/tor stop >> proxyoff
 
 apt-get -y install tor proxychains
+grep -q -F "alias proxyon='cd /$USERNAME/Scripts ; ./proxyon ; cd ~' " /$USERNAME/.bashrc || echo "alias proxyon='cd /$USERNAME/Scripts ; ./proxyon ; cd ~' " >> /$USERNAME/.bashrc
+grep -q -F "alias proxyoff='cd /$USERNAME/Scripts ; ./proxyoff ; cd ~' " /$USERNAME/.bashrc || echo "alias proxyoff='cd /$USERNAME/Scripts ; ./proxyoff ; cd ~' " >> /$USERNAME/.bashrc
 
 else
 
@@ -104,7 +110,8 @@ cd Scripts
 touch tor2
 echo cd /$USERNAME/Scripts/tor-browser_en-US/Browser >> tor2
 echo ./start-tor-browser >> tor2
-echo "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " >> /$USERNAME/.bashrc
+#echo "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " >> /$USERNAME/.bashrc
+grep -q -F "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " /$USERNAME/.bashrc || echo "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " >> /$USERNAME/.bashrc
 
 apt-get -y install aria2
 echo 64 ou 32 bits \? \(64\/32\)
@@ -200,16 +207,19 @@ echo set timeout 10 >> set2
 echo system \"mv /root/.set//payload.exe /root/payload.exe\" >> set2
 echo system \"rm @ip\" >> set2
 echo interact >> set2
-echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
+#echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
+grep -q -F "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " /$USERNAME/.bashrc || echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
 
 #scan wifi
-echo "alias scan='airodump-ng wlan0' " >> /$USERNAME/.bashrc
+#echo "alias scan='airodump-ng wlan0' " >> /$USERNAME/.bashrc
+grep -q -F "alias scan='airodump-ng wlan0' " /$USERNAME/.bashrc || echo "alias scan='airodump-ng wlan0' "  >> /$USERNAME/.bashrc
 
 #My_IP
 echo '#!/bin/bash' >> My_IP
 echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> My_IP
 echo echo \$ip >> My_IP
-echo "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " >> /$USERNAME/.bashrc
+#echo "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " >> /$USERNAME/.bashrc
+grep -q -F "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " /$USERNAME/.bashrc || echo "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " >> /$USERNAME/.bashrc
 
 #Finish
 apt-get -y update
