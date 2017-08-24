@@ -21,7 +21,7 @@ read var1
 
 if [ $var1 = "Y" ] || [ $var1 = "y" ]
 then
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch kick
 echo cd /$USERNAME/Scripts/kickthemout >> kick
 echo python kickthemout.py >> kick
@@ -47,7 +47,7 @@ read var2
 
 if [ $var2 = "Y" ] || [ $var2 = "y" ]
 then
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch Mac
 echo 'service network-manager stop ; sleep 5' >> Mac
 echo 'ifconfig wlan0 down' >> Mac
@@ -56,7 +56,7 @@ echo 'ifconfig wlan0 up ; sleep 5' >> Mac
 echo 'service network-manager start' >> Mac
 grep -q -F "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " /$USERNAME/.bashrc || echo "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " >> /$USERNAME/.bashrc
 
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch Macchanger.sh
 echo '#!/bin/bash' >> Macchanger.sh
 echo 'ifconfig wlan0 down' >> Macchanger.sh
@@ -82,13 +82,13 @@ read var3
 
 if [ $var3 = "Y" ] || [ $var3 = "y" ]
 then
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch proxyon
 echo service tor start >> proxyon
 echo /etc/init.d/tor start >> proxyon
 echo proxychains firefox www.duckduckgo.com >> proxyon
 
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch proxyoff
 echo service tor stop >> proxyoff
 echo /etc/init.d/tor stop >> proxyoff
@@ -112,7 +112,7 @@ read var4
 
 if [ $var4 = "Y" ] || [ $var4 = "y" ]
 then
-cd Scripts
+cd "/$USERNAME/Scripts"
 touch tor2
 echo cd /$USERNAME/Scripts/tor-browser_en-US/Browser >> tor2
 echo ./start-tor-browser >> tor2
@@ -155,7 +155,7 @@ clear
 
 #if [ $var5 = "Y" ] || [ $var5 = "y" ]
 #then
-#cd Scripts
+#cd "/$USERNAME/Scripts"
 #touch Virus
 #echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..$
 #echo read rep >> Virus
