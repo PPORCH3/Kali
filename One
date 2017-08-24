@@ -4,6 +4,9 @@ mkdir Scripts
 cd Scripts
 chmod +x -R /$USERNAME/Scripts
 
+echo "Mise a jour de la distribution (cela peut prendre du temps)"
+read -rn1 -p "Press any key to continue"
+
 apt-get -y update 
 apt-get -y upgrade
 apt-get -y install figlet
