@@ -9,7 +9,7 @@ read -rn1 -p "Press any key to continue"
 
 apt-get -y update 
 apt-get -y upgrade
-apt-get -y install figlet
+apt-get -y install figlet git lolcat
 
 clear
 figlet -ck ATTENTION : Ceci est une version alpha, elle peut donc contenir des bugs
