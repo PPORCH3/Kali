@@ -260,6 +260,7 @@ sleep 2
 #WARNING#
 figlet ATTENTION
 echo "Avant de lancer le raccourci de SeToolKit veuillez le lancer manuellement pour accepter les conditions d'utilistaion"
+echo "Pensez aussi a regarder en bas du scripts si vous constater des erreurs"
 read -rn1 -p "Press any key to continue"
 
 #Bugs Known#
