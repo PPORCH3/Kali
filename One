@@ -252,6 +252,7 @@ grep -q -F "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " /$USERNAME/.b
 apt-get -y update
 apt-get -y upgrade
 chmod +x -R /$USERNAME/Scripts
+systemctl --user enable pulseaudio #For the sound
 clear
 figlet -ck Job Done Bye
 sleep 2
