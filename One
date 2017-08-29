@@ -176,6 +176,9 @@ clear
 clear
 
 #set & set2
+echo Creer le Script pour SeToolKit
+if [ $var4 = "Y" ] || [ $var4 = "y" ]
+then
 echo '#!/bin/bash' >> set
 echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> set
 echo 'echo $ip > @ip' >> set
@@ -215,6 +218,9 @@ echo system \"rm @ip\" >> set2
 echo interact >> set2
 #echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
 grep -q -F "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " /$USERNAME/.bashrc || echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
+else 
+echo "C'est toi qui voit" 
+fi
 
 #scan wifi
 #echo "alias scan='airodump-ng wlan0' " >> /$USERNAME/.bashrc
