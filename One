@@ -4,6 +4,8 @@ mkdir Scripts
 cd Scripts
 chmod +x -R /$USERNAME/Scripts
 
+grep -q -F "deb http://http.kali.org/kali kali-rolling main contrib non-free" /etc/apt/sources.list || echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
+
 echo "Mise a jour de la distribution (cela peut prendre du temps)"
 read -rn1 -p "Press any key to continue"
 
