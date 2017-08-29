@@ -157,7 +157,7 @@ clear
 #then
 #cd "/$USERNAME/Scripts"
 #touch Virus
-#echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..$
+#echo echo Quelle repertoire voulez-vous scanner ? \(\/,\/etc\/apt\/,\/root\/,..\)
 #echo read rep >> Virus
 #echo cd \$rep >> Virus
 #echo clamscan -r >> Virus
@@ -176,8 +176,12 @@ clear
 clear
 
 #set & set2
-echo Creer le Script pour SeToolKit
-if [ $var4 = "Y" ] || [ $var4 = "y" ]
+cd "/$USERNAME/Scripts"
+echo Creer le Script pour SeToolKit \?
+echo Y\/N
+read var6
+
+if [ $var6 = "Y" ] || [ $var6 = "y" ]
 then
 echo '#!/bin/bash' >> set
 echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> set
@@ -227,11 +231,20 @@ fi
 grep -q -F "alias scan='airodump-ng wlan0' " /$USERNAME/.bashrc || echo "alias scan='airodump-ng wlan0' "  >> /$USERNAME/.bashrc
 
 #My_IP
+cd "/$USERNAME/Scripts"
+echo Creer le script My_IP ?
+var7="/$USERNAME/Scripts/My_IP"
+if [ ! -f "$var7" ]
+then
 echo '#!/bin/bash' >> My_IP
 echo ip\=\"\$\(ifconfig wlan0 \|sed -n \'2p\'\| awk \'\{print \$2\}\'\)\" >> My_IP
 echo echo \$ip >> My_IP
+else
+echo All ready Exist
+fi
 #echo "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " >> /$USERNAME/.bashrc
 grep -q -F "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " /$USERNAME/.bashrc || echo "alias My_IP='cd /$USERNAME/Scripts ; ./My_IP ; cd ~' " >> /$USERNAME/.bashrc
+
 
 #Finish
 apt-get -y update
